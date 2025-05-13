@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Edad</title>
+</head>
+<body>
+  <h1>Calculadora de Edad</h1>
+
+  <label for="nacimiento">Año de nacimiento:</label>
+  <input type="number" id="nacimiento">
+
+  <button id="calcular">Calcular Edad</button>
+
+  <p id="resultadoEdad"></p>
+
+  <script>
+    function calcularEdad(anioNacimiento) {
+
+      const anioActual = new Date().getFullYear();
+      const edad = anioActual - anioNacimiento;
+
+      if (edad < 0) {
+        return "Error: El año de nacimiento no puede ser en el futuro.";
+      } else if (edad > 120) {
+        return "Advertencia: La edad calculada supera los 120 años. Verifique el año ingresado.";
+      } else {
+        return `Tu edad es ${edad} años.`;
+      }
+    }
+
+    document.getElementById("calcular").addEventListener("click", function() {
+      const input = document.getElementById("nacimiento").value;
+      const anio = Number(input);
+      const resultado = calcularEdad(anio);
+      document.getElementById("resultadoEdad").textContent = resultado;
+    });
+  </script>
+</body>
+</html>
