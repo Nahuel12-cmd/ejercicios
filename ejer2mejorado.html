@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Interacción con JavaScript</title>
+</head>
+<body>
+  <h1>Interacción con JavaScript</h1>
+
+  
+  <button id="miBoton">Haz clic aquí</button>
+  <button id="cambiarTamano">Cambiar tamaño</button>
+  <button id="cambiarFondo">Cambiar fondo</button>
+  <button id="restablecer">Restablecer</button>
+
+  
+  <p id="resultado">Esperando clic...</p>
+  <p id="contador">Clics: 0</p>
+
+  <script>
+   
+    const boton = document.getElementById("miBoton");
+    const resultado = document.getElementById("resultado");
+    const contadorTexto = document.getElementById("contador");
+    const btnTamano = document.getElementById("cambiarTamano");
+    const btnFondo = document.getElementById("cambiarFondo");
+    const btnReset = document.getElementById("restablecer");
+
+    
+    let contador = 0;
+
+    
+    boton.addEventListener("click", function () {
+      contador++;
+      resultado.textContent = "¡Has hecho clic en el botón!";
+      resultado.style.color = "blue";
+      resultado.style.fontWeight = "bold";
+      contadorTexto.textContent = `Clics: ${contador}`;
+    });
+
+    
+    btnTamano.addEventListener("click", function () {
+      resultado.style.fontSize = "24px";
+    });
+
+    
+    btnFondo.addEventListener("click", function () {
+      resultado.style.backgroundColor = "lightyellow";
+    });
+
+    
+    btnReset.addEventListener("click", function () {
+      resultado.textContent = "Esperando clic...";
+      resultado.style = ""; 
+      contador = 0;
+      contadorTexto.textContent = "Clics: 0";
+    });
+  </script>
+</body>
+</html>
