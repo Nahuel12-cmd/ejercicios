@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control de Acceso</title>
+</head>
+<body>
+
+  <h1>Acceso Controlado</h1>
+
+  <label for="clave">Ingrese la clave:</label>
+  <input type="password" id="clave" placeholder="Clave de acceso">
+  
+  
+  <button id="validar">Validar Clave</button>
+
+  
+  <p id="resultado"></p>
+
+  <script>
+   
+    const claveCorrecta = "1234";
+    let intentos = 0; 
+
+   
+    const claveInput = document.getElementById("clave");
+    const resultado = document.getElementById("resultado");
+    const botonValidar = document.getElementById("validar");
+
+   
+    function validarClave() {
+      const claveUsuario = claveInput.value;
+      
+     
+      if (claveUsuario === claveCorrecta) {
+        resultado.textContent = "Acceso otorgado";
+        resultado.style.color = "green"; 
+        botonValidar.disabled = true; 
+      } else {
+        
+        intentos++;
+        
+        
+        if (intentos < 3) {
+          resultado.textContent = "Clave incorrecta. Vuelva a ingresar la clave.";
+          resultado.style.color = "red"; 
+        } else {
+          resultado.textContent = "Acceso denegado. Has agotado los intentos."; 
+          resultado.style.color = "red";
+          botonValidar.disabled = true;
+        }
+      }
+
+      
+      claveInput.value = "";
+      claveInput.focus(); 
+    }
+
+    
+    botonValidar.addEventListener("click", validarClave);
+  </script>
+
+</body>
+</html>
